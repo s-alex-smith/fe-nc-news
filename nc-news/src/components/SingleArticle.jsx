@@ -4,17 +4,7 @@ import * as api from "../utils";
 
 class SingleArticle extends Component {
   state = {
-    article: {
-      article_id: 1,
-      title: "Running a Node App",
-      body:
-        "This is part two of a series on how to get up and running with Systemd and Node.js. This part dives deeper into how to successfully run your app with systemd long-term, and how to set it up in a production environment.",
-      votes: 0,
-      topic: "coding",
-      author: "jessjelly",
-      created_at: "2016-08-18T12:07:52.389Z",
-      comment_count: "8",
-    },
+    article: {},
     isLoading: true,
   };
 
@@ -27,10 +17,15 @@ class SingleArticle extends Component {
     if (isLoading) return <Loader />;
     return (
       <main className="mainBody">
-        <h3>{article.title}</h3>
-        <p>written by: {article.author}</p>
-        <p>{article.body}</p>
-        <p>Votes: {article.votes}</p>
+        <div className="fullArticle">
+          <h3>{article.title}</h3>
+          <p className="p1">written by: {article.author}</p>
+          <p className="p2">{article.body}</p>
+          <div className="votesBox">
+            <p>Votes: {article.votes}</p>
+          </div>
+          <button>See all comments</button>
+        </div>
       </main>
     );
   }

@@ -1,20 +1,52 @@
 .App {
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 15% 10% 75%;
+  grid-template-rows: 150px 100px 75%;
   grid-template-areas: "header header" "navbar navbar" "main main";
   text-align: center;
 }
 
 .Header {
   grid-area: header;
-  border: 2px solid;
-  background: red;
+  background: #6898f8;
+  align-items: center;
+  justify-content: center;
   margin: 10px;
+  border: 2px solid black;
 }
 
 .Nav {
   grid-area: navbar;
+  background: #f87e68;
   border: 2px solid;
   margin: 10px;
+  border: 2px solid black;
+  padding: 10px;
+}
+
+.navItems {
+  display: inline;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 20px;
+  justify-content: center;
+}
+
+.mainBody {
+  border: 2px solid black;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.articleCard {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 60% 40%;
+  border: 2px solid black;
+  margin: 10px;
+  width: 70%;
+  align-content: center;
+  text-align: center;
 }

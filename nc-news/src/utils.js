@@ -19,13 +19,31 @@ export const getArticles = ({ topic, sort_by, order }) => {
 };
 
 export const getSingleArticle = ({ article_id }) => {
-  return request.get(`articles/${article_id}`).then(({ data }) => {
+  return request.get(`/articles/${article_id}`).then(({ data }) => {
     return data.article;
   });
 };
 
 export const getComments = ({ article_id }) => {
-  return request.get(`articles/${article_id}/comments`).then(({ data }) => {
+  return request.get(`/articles/${article_id}/comments`).then(({ data }) => {
     return data.comments;
   });
+};
+
+export const patchVotes = (inc_votes, id, type) => {
+  return request.patch(`/${type}/${id}`, { inc_votes }).then(({ data }) => {
+    return data;
+  });
+};
+
+export const postComment = (newComment, article_id) => {
+  return request
+    .post(`/articles/${article_id}/comments`, newComment)
+    .then(({ data }) => {
+      return data.comment;
+    });
+};
+
+export const deleteComment = (comment_id) => {
+  return request.delete(`/comments/${comment_id}`);
 };

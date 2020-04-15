@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as api from "../utils";
 import CommentCard from "./CommentCard";
 import Loader from "./Loader";
+import CommentForm from "./CommentForm";
 
 class Comments extends Component {
   state = {
@@ -15,6 +16,7 @@ class Comments extends Component {
 
   render() {
     const { comments, isLoading } = this.state;
+    const { article_id } = this.props;
     if (isLoading) return <Loader />;
     return (
       <div>
@@ -23,17 +25,11 @@ class Comments extends Component {
             return <CommentCard comment={comment} key={comment.comment_id} />;
           })}
         </ul>
-        <form>
-          <label>
-            username:
-            <input type="text" />
-          </label>
-          <label>
-            Comment
-            <input type="text" placeholder="have your say.." />
-          </label>
-          <button>Submit</button>
-        </form>
+        <CommentForm
+          article_id={article_id}
+          addComment={this.addComment}
+          username={this.props.username}
+        />
       </div>
     );
   }
@@ -41,6 +37,13 @@ class Comments extends Component {
     const { article_id } = this.props;
     api.getComments({ article_id }).then((comments) => {
       this.setState({ comments, isLoading: false });
+    });
+  };
+
+  addComment = (newComment) => {
+    console.log(newComment);
+    this.setState(({ comments }) => {
+      return { comments: [...comments, newComment] };
     });
   };
 }

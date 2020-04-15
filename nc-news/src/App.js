@@ -10,7 +10,7 @@ import Comments from "./components/Comments";
 class App extends Component {
   state = {
     userInfo: {
-      username: "Jess Jelly",
+      username: "jessjelly",
     },
   };
   render() {
@@ -22,7 +22,10 @@ class App extends Component {
           <ArticleList path="/" />
           <ArticleList path="/articles/topics/:topic" />
           <SingleArticle path="/articles/:article_id" />
-          <Comments path="/articles/:article_id/comments" />
+          <Comments
+            path="/articles/:article_id/comments"
+            username={this.state.userInfo.username}
+          />
         </Router>
       </div>
     );

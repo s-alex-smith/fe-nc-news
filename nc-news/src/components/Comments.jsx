@@ -25,7 +25,7 @@ class Comments extends Component {
       );
     if (isLoading) return <Loader />;
     return (
-      <div>
+      <div className="commentCard">
         <ul>
           {comments.map((comment) => {
             return (

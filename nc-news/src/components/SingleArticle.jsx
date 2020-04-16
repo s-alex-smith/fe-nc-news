@@ -4,6 +4,7 @@ import * as api from "../utils";
 import { Link } from "@reach/router";
 import Voter from "./Voter";
 import ErrorDisplay from "./ErrorDisplay";
+import "../styles/global.css";
 
 class SingleArticle extends Component {
   state = {
@@ -38,7 +39,7 @@ class SingleArticle extends Component {
           </div>
           <h4>
             <Link to={`/articles/${article.article_id}/comments`}>
-              See comments for {article.title}
+              See comments
             </Link>
           </h4>
         </div>

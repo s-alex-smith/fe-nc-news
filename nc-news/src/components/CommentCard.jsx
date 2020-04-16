@@ -1,10 +1,11 @@
 import React from "react";
 import Voter from "./Voter";
 import Deleter from "./Deleter";
+import "../styles/global.css";
 
 const CommentCard = ({ comment, username, removeComment }) => {
   return (
-    <article className="articleCard">
+    <article className="commentCard">
       <li>
         <p>{comment.body}</p>
         <p>{comment.author}</p>
@@ -14,7 +15,13 @@ const CommentCard = ({ comment, username, removeComment }) => {
           username={username}
           removeComment={removeComment}
         />
-        <Voter votes={comment.votes} id={comment.comment_id} type="comments" />
+        <div className="commentVotes">
+          <Voter
+            votes={comment.votes}
+            id={comment.comment_id}
+            type="comments"
+          />
+        </div>
       </li>
     </article>
   );

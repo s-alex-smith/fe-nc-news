@@ -32,7 +32,7 @@ header p {
 }
 
 nav {
-  background-color: #e45397;
+  background-color: #c33c54;
   /* position: sticky; */
   /* position: -webkit-sticky; */
   /* top: 0; */
@@ -65,11 +65,13 @@ nav li {
   text-align: center;
   color: #1abc9c;
   position: relative;
-  background: #e45397;
+  background: brickred;
   overflow: hidden;
   z-index: 1;
   cursor: pointer;
   transition: color 0.3s;
+  border-left: 0.5px solid black;
+  border-right: 0.5px solid black;
 }
 
 .nava {
@@ -126,14 +128,12 @@ nav li:hover::after {
 .articleCard {
   display: grid;
   background: linear-gradient(
-    90deg,
-    rgba(228, 83, 151, 1) 38%,
+    135deg,
+    rgba(195, 60, 84, 0.9710259103641457) 60%,
     rgba(250, 249, 243, 1) 100%
   );
   grid-template-columns: 80% 20%;
   grid-template-rows: 60% 40%;
-  /* border-bottom-style: 10px solid hsl(332, 86%, 48%);
-  border-left-style: 2px solid #a11356; */
   margin-top: 5px;
   margin-bottom: 2px;
   width: 99%;
@@ -156,11 +156,10 @@ nav li:hover::after {
 }
 
 .fullArticle {
-  background: linear-gradient(
-    90deg,
-    rgba(228, 83, 151, 1) 38%,
-    rgba(250, 249, 243, 1) 100%
-  );
+  background-color: #c33c54;
+  margin-top: 5px;
+  border-bottom: 3px solid #bd1130;
+  border-left: 3px solid #bd1130;
 }
 
 .fullArticle h3 {
@@ -169,11 +168,14 @@ nav li:hover::after {
   text-align: justify;
   text-decoration: underline;
   margin: 10px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   /* border: 2px solid black; */
 }
 
 .fullArticle .p1 {
-  color: rgba(0, 0, 0, 0.664);
+  font-family: monospace;
+  color: rgba(0, 0, 0, 0.644);
   text-align: justify;
   margin: 10px;
   padding: 10px;
@@ -182,7 +184,8 @@ nav li:hover::after {
 }
 
 .fullArticle .p2 {
-  color: HSBA(0, 0, 0, 0, 75);
+  font-family: monospace;
+  color: rgba(0, 0, 0, 0.911);
   font-size: 16px;
   font-weight: normal;
   text-align: justify;
@@ -190,11 +193,129 @@ nav li:hover::after {
   margin: 10px;
 }
 
+.fullArticle h4 {
+  font-size: 20px;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 10px;
+  font-family: monospace;
+}
+
 .votesBox {
-  background: #81d1c1;
-  border: 1px solid black;
+  font-family: monospace;
+  font-size: 15px;
+  background: #1abc9c;
+  border: 2px solid black;
   margin: 5px;
   padding: 5px;
+  width: 35%;
+  float: right;
+  text-align: center;
+}
+
+.commentCard li {
+  display: grid;
+  background: linear-gradient(
+    135deg,
+    rgba(195, 60, 84, 0.9710259103641457) 60%,
+    rgba(250, 249, 243, 1) 100%
+  );
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 60% 40%;
+  grid-template-areas: "topLeft topRight" "bottomLeft bottomRight";
+  margin-top: 5px;
+  margin-bottom: 2px;
+  width: 99%;
+  align-items: center;
+  text-align: start;
+}
+
+.articleCard p {
+  font-family: monospace;
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+.commentVotes {
+  grid-area: bottomRight;
+  font-family: monospace;
+  font-size: 10px;
+  background: #1abc9c;
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px;
+  width: 40%;
+  float: right;
+  text-align: center;
+}
+
+.articleCard .commentVotes {
+  font-family: monospace;
+  font-size: 30px;
+  background: #1abc9c;
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px;
+  width: 35%;
+  float: right;
+  text-align: center;
+}
+
+.btn {
+  border: none;
+  font-family: "Lato";
+  font-size: inherit;
+  color: #fff;
+  cursor: pointer;
+  padding: 25px 60px;
+  display: inline-block;
+  margin: 15px 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.btn:disabled {
+  background: grey;
+}
+
+.btn:disabled:hover {
+  background: grey;
+}
+
+.btn:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s;
+}
+.btn-3 {
+  background: #c33c54;
+}
+
+.btn-3:hover {
+  background: #e64865;
+}
+
+.btn-3:active {
+  background: black;
+  top: 2px;
+}
+
+.btn-2 {
+  background: black;
+}
+
+.btn-2:hover {
+  background: rgb(53, 52, 52);
+}
+
+.btn-2:active {
+  background: black;
+  top: 2px;
 }
 
 select {

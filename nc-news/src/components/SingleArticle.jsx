@@ -3,11 +3,13 @@ import Loader from "./Loader";
 import * as api from "../utils";
 import { Link } from "@reach/router";
 import Voter from "./Voter";
+import ErrorDisplay from "./ErrorDisplay";
 
 class SingleArticle extends Component {
   state = {
     article: {},
     isLoading: true,
+    articleError: null,
   };
 
   componentDidMount = () => {
@@ -15,8 +17,12 @@ class SingleArticle extends Component {
   };
 
   render() {
-    const { article, isLoading } = this.state;
+    const { article, isLoading, articleError } = this.state;
     if (isLoading) return <Loader />;
+    if (articleError)
+      return (
+        <ErrorDisplay status={articleError.status} msg={articleError.msg} />
+      );
     return (
       <main className="mainBody">
         <div className="fullArticle">
@@ -42,9 +48,21 @@ class SingleArticle extends Component {
 
   fetchSingleArticle = () => {
     const { article_id } = this.props;
-    api.getSingleArticle({ article_id }).then((article) => {
-      this.setState({ article, isLoading: false });
-    });
+    api
+      .getSingleArticle({ article_id })
+      .then((article) => {
+        this.setState({ article, isLoading: false });
+      })
+      .catch((err) => {
+        console.dir(err);
+        this.setState({
+          articleError: {
+            status: err.response.status,
+            msg: "article not found",
+          },
+          isLoading: false,
+        });
+      });
   };
 }
 

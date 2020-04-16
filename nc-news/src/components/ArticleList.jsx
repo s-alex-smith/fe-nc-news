@@ -3,6 +3,7 @@ import Loader from "./Loader";
 import * as api from "../utils";
 import ArticleCard from "./ArticleCard";
 import "../styles/global.css";
+import ErrorDisplay from "./ErrorDisplay";
 
 class ArticleList extends Component {
   state = {
@@ -10,6 +11,7 @@ class ArticleList extends Component {
     isLoading: true,
     sort_by: "",
     order: "desc",
+    topicError: null,
   };
 
   componentDidMount = () => {
@@ -27,11 +29,13 @@ class ArticleList extends Component {
   };
 
   render() {
-    const { articles, isLoading, sort_by, order } = this.state;
+    const { articles, isLoading, sort_by, order, topicError } = this.state;
     if (isLoading) return <Loader />;
+    if (topicError)
+      return <ErrorDisplay status={topicError.status} msg={topicError.msg} />;
     return (
       <main className="mainBody">
-        <form>
+        <form className="sortByForm">
           <label>
             Sort articles by:
             <select sort_by={sort_by} onChange={this.handleChangeSortBy}>
@@ -66,9 +70,20 @@ class ArticleList extends Component {
   fetchArticles = () => {
     const { topic } = this.props;
     const { sort_by, order } = this.state;
-    api.getArticles({ topic, sort_by, order }).then((articles) => {
-      this.setState({ articles, isLoading: false });
-    });
+    api
+      .getArticles({ topic, sort_by, order })
+      .then((articles) => {
+        this.setState({ articles, isLoading: false });
+      })
+      .catch((err) => {
+        this.setState({
+          topicError: {
+            status: err.response.status,
+            msg: "topic not found",
+          },
+          isLoading: false,
+        });
+      });
   };
 }
 

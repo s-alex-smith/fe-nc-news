@@ -6,6 +6,7 @@ import ArticleList from "./components/ArticleList";
 import { Router } from "@reach/router";
 import SingleArticle from "./components/SingleArticle";
 import Comments from "./components/Comments";
+import ErrorDisplay from "./components/ErrorDisplay";
 
 class App extends Component {
   state = {
@@ -26,6 +27,7 @@ class App extends Component {
             path="/articles/:article_id/comments"
             username={this.state.userInfo.username}
           />
+          <ErrorDisplay default status={404} msg={"page not found"} />
         </Router>
       </div>
     );

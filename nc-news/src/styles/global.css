@@ -1,28 +1,28 @@
 .App {
   display: grid;
-  background: #93f698;
+  background: #faf9f3;
   grid-template-columns: 100%;
-  grid-template-rows: 150px 100px 75%;
+  grid-template-rows: 10% 10% 80%;
   grid-template-areas: "header header" "navbar navbar" "main main";
   text-align: center;
 }
 
 .Header {
   grid-area: header;
-  background: #6898f8;
-  align-items: center;
-  justify-content: center;
-  margin: 20px;
-  border: 2px solid black;
+  background: #e6a6f6;
+  /* height: 100px; */
+  border: 2px solid #df7bf8;
 }
 
 .Nav {
   grid-area: navbar;
-  background: #f87e68;
+  background: rgba(223, 45, 129, 1);
+  /* height: 75px; */
   border: 2px solid;
-  margin: 20px;
+  margin: 30px;
   border: 2px solid black;
   padding: 10px;
+  box-sizing: border-box;
 }
 
 .navItems {
@@ -33,25 +33,39 @@
   justify-content: center;
 }
 
+@media only screen and (max-width: 768px) {
+  .navItems {
+    display: flex;
+    flex-direction: column;
+  }
+}
 .mainBody {
-  border: 2px solid black;
-  background: #e6a6f6;
-  margin: 20px;
+  /* border: 2px solid black;
+  background: #bcbacb; */
+  margin: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .articleCard {
   display: grid;
-  background: #a2f8ed;
+  background: linear-gradient(
+    90deg,
+    rgba(223, 45, 129, 1) 38%,
+    rgba(250, 249, 243, 1) 100%
+  );
   grid-template-columns: 80% 20%;
   grid-template-rows: 60% 40%;
-  border: 2px solid black;
-  margin: 10px;
-  width: 70%;
-  align-content: center;
-  text-align: center;
+  border-bottom-style: 10px solid #a11356;
+  border-left-style: 2px solid #a11356;
+  margin: 3px;
+  width: 100%;
+  text-align: justify;
+}
+
+.sortByForm {
+  /* move to the right */
 }
 
 .fullArticle {

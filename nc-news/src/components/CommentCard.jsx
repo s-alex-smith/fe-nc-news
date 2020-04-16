@@ -4,7 +4,7 @@ import Deleter from "./Deleter";
 
 const CommentCard = ({ comment, username, removeComment }) => {
   return (
-    <div className="commentCard">
+    <article className="articleCard">
       <li>
         <p>{comment.body}</p>
         <p>{comment.author}</p>
@@ -16,7 +16,7 @@ const CommentCard = ({ comment, username, removeComment }) => {
         />
         <Voter votes={comment.votes} id={comment.comment_id} type="comments" />
       </li>
-    </div>
+    </article>
   );
 };
 

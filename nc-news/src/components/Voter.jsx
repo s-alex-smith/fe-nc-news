@@ -4,21 +4,19 @@ import * as api from "../utils";
 class Voter extends Component {
   state = {
     optimisticVotes: 0,
-    clicks: 0,
   };
 
   handleClick = (vote) => {
     this.setState((currentState) => {
       return {
         optimisticVotes: currentState.optimisticVotes + vote,
-        clicks: 1,
       };
     });
     api.patchVotes(vote, this.props.id, this.props.type);
   };
 
   render() {
-    const { optimisticVotes, clicks } = this.state;
+    const { optimisticVotes } = this.state;
     return (
       <div className="votesBox">
         <p>Votes: {this.props.votes + optimisticVotes}</p>
@@ -26,7 +24,7 @@ class Voter extends Component {
           onClick={() => {
             this.handleClick(1);
           }}
-          disabled={clicks > 0}
+          disabled={optimisticVotes > 0}
         >
           Yay!
         </button>
@@ -34,7 +32,7 @@ class Voter extends Component {
           onClick={() => {
             this.handleClick(-1);
           }}
-          disabled={clicks > 0}
+          disabled={optimisticVotes < 0}
         >
           Nay!
         </button>

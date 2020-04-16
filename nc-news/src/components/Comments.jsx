@@ -9,7 +9,7 @@ class Comments extends Component {
   state = {
     comments: [],
     isLoading: true,
-    hasError: false,
+    commentError: null,
   };
 
   componentDidMount = () => {
@@ -17,9 +17,12 @@ class Comments extends Component {
   };
 
   render() {
-    const { comments, isLoading, hasError } = this.state;
+    const { comments, isLoading, commentError } = this.state;
     const { article_id } = this.props;
-    if (hasError) return <ErrorDisplay />;
+    if (commentError)
+      return (
+        <ErrorDisplay status={commentError.status} msg={commentError.msg} />
+      );
     if (isLoading) return <Loader />;
     return (
       <div>
@@ -51,18 +54,22 @@ class Comments extends Component {
         this.setState({ comments, isLoading: false });
       })
       .catch((err) => {
-        this.setState({ hasError: true });
+        this.setState({
+          commentError: {
+            status: err.response.status,
+            msg: err.response.data.message,
+          },
+        });
       });
   };
 
   addComment = (newComment) => {
     this.setState(({ comments }) => {
       return { comments: [...comments, newComment] };
-    }).catch((err) => console.dir(err));
+    });
   };
 
   removeComment = (deletedComment_id) => {
-    console.log("removeComment called");
     this.setState((currentState) => {
       return {
         comments: currentState.comments.filter(

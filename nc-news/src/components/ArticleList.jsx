@@ -4,6 +4,7 @@ import * as api from "../utils";
 import ArticleCard from "./ArticleCard";
 import "../styles/global.css";
 import ErrorDisplay from "./ErrorDisplay";
+import SortArticlesForm from "./SortArticlesForm";
 
 class ArticleList extends Component {
   state = {
@@ -35,23 +36,12 @@ class ArticleList extends Component {
       return <ErrorDisplay status={topicError.status} msg={topicError.msg} />;
     return (
       <main className="mainBody">
-        <form className="sortByForm">
-          <label>
-            Sort articles by:
-            <select sort_by={sort_by} onChange={this.handleChangeSortBy}>
-              <option sort_by="created_at">created_at</option>
-              <option sort_by="votes">votes</option>
-              <option sort_by="comment_count">comment_count</option>
-            </select>
-          </label>
-          <label>
-            Arrange by:
-            <select order={order} onChange={this.handleChangeOrder}>
-              <option order="desc">desc</option>
-              <option order="asc">asc</option>
-            </select>
-          </label>
-        </form>
+        <SortArticlesForm
+          sort_by={sort_by}
+          order={order}
+          handleChangeOrder={this.handleChangeOrder}
+          handleChangeSortBy={this.handleChangeSortBy}
+        />
         {articles.map((article) => {
           return <ArticleCard article={article} key={article.article_id} />;
         })}
@@ -76,10 +66,11 @@ class ArticleList extends Component {
         this.setState({ articles, isLoading: false });
       })
       .catch((err) => {
+        console.dir(err);
         this.setState({
           topicError: {
             status: err.response.status,
-            msg: "topic not found",
+            msg: err.response.data.message,
           },
           isLoading: false,
         });

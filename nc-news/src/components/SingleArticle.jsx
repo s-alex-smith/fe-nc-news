@@ -58,7 +58,7 @@ class SingleArticle extends Component {
         this.setState({
           articleError: {
             status: err.response.status,
-            msg: "article not found",
+            msg: err.response.data.message,
           },
           isLoading: false,
         });

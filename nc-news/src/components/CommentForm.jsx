@@ -5,11 +5,11 @@ import ErrorDisplay from "./ErrorDisplay";
 class CommentForm extends Component {
   state = {
     commentInput: "",
-    usernameInput: this.props.username,
     postError: null,
   };
   render() {
-    const { usernameInput, commentInput, postError } = this.state;
+    const { commentInput, postError } = this.state;
+    const { username } = this.props;
     if (postError)
       return <ErrorDisplay status={postError.status} msg={postError.msg} />;
     return (
@@ -19,7 +19,7 @@ class CommentForm extends Component {
           <input
             type="text"
             name="usernameInput"
-            value={usernameInput}
+            value={username}
             onChange={this.handleChange}
           />
         </label>
@@ -46,8 +46,8 @@ class CommentForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { article_id, addComment } = this.props;
-    const { usernameInput, commentInput } = this.state;
-    const newComment = { username: usernameInput, body: commentInput };
+    const { commentInput } = this.state;
+    const newComment = { username: this.props.username, body: commentInput };
     api
       .postComment(newComment, article_id)
       .then((comment) => {
@@ -57,12 +57,12 @@ class CommentForm extends Component {
         this.setState({
           postError: {
             status: err.response.status,
-            msg: "missing required field",
+            msg: err.response.data.message,
           },
         });
       });
 
-    this.setState({ commentInput: "", usernameInput: this.props.username });
+    this.setState({ commentInput: "" });
   };
 }
 

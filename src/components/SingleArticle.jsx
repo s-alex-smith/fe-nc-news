@@ -38,7 +38,10 @@ class SingleArticle extends Component {
             />
           </div>
           <h4>
-            <Link to={`/articles/${article.article_id}/comments`}>
+            <Link
+              to={`/articles/${article.article_id}/comments`}
+              className="btn btn-4"
+            >
               See comments
             </Link>
           </h4>
@@ -55,7 +58,6 @@ class SingleArticle extends Component {
         this.setState({ article, isLoading: false });
       })
       .catch((err) => {
-        console.dir(err);
         this.setState({
           articleError: {
             status: err.response.status,

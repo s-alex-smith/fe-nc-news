@@ -9,21 +9,11 @@ class CommentForm extends Component {
   };
   render() {
     const { commentInput, postError } = this.state;
-    const { username } = this.props;
+
     if (postError)
       return <ErrorDisplay status={postError.status} msg={postError.msg} />;
     return (
       <form onSubmit={this.handleSubmit} id="commentForm">
-        <label className="username">
-          Username:
-          <input
-            type="text"
-            name="usernameInput"
-            value={username}
-            onChange={this.handleChange}
-          />
-        </label>
-
         <label className="comment">
           <textarea
             type="text"
@@ -34,7 +24,7 @@ class CommentForm extends Component {
           />
         </label>
 
-        <button>Submit</button>
+        <button className="btn btn-3">Submit</button>
       </form>
     );
   }
@@ -49,19 +39,23 @@ class CommentForm extends Component {
     const { article_id, addComment } = this.props;
     const { commentInput } = this.state;
     const newComment = { username: this.props.username, body: commentInput };
-    api
-      .postComment(newComment, article_id)
-      .then((comment) => {
-        addComment(comment);
-      })
-      .catch((err) => {
-        this.setState({
-          postError: {
-            status: err.response.status,
-            msg: err.response.data.message,
-          },
+    if (commentInput.length === 0)
+      return <ErrorDisplay status="404" msg="Missing required field" />;
+    else {
+      api
+        .postComment(newComment, article_id)
+        .then((comment) => {
+          addComment(comment);
+        })
+        .catch((err) => {
+          this.setState({
+            postError: {
+              status: err.response.status,
+              msg: err.response.data.message,
+            },
+          });
         });
-      });
+    }
 
     this.setState({ commentInput: "" });
   };

@@ -19,7 +19,7 @@ class App extends Component {
       <div className="App">
         <HeaderBar username={this.state.userInfo.username} />
         <NavBar />
-        <Router>
+        <Router id="router">
           <ArticleList path="/" />
           <ArticleList path="/articles/topics/:topic" />
           <SingleArticle path="/articles/:article_id" />

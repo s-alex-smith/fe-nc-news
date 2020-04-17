@@ -10,6 +10,7 @@ class Comments extends Component {
     comments: [],
     isLoading: true,
     commentError: null,
+    deleteError: null,
   };
 
   componentDidMount = () => {
@@ -27,6 +28,11 @@ class Comments extends Component {
     return (
       <div className="commentCard">
         <ul>
+          <CommentForm
+            article_id={article_id}
+            addComment={this.addComment}
+            username={this.props.username}
+          />
           {comments.map((comment) => {
             return (
               <CommentCard
@@ -34,14 +40,10 @@ class Comments extends Component {
                 username={this.props.username}
                 key={comment.comment_id}
                 removeComment={this.removeComment}
+                deleteError={this.state.deleteError}
               />
             );
           })}
-          <CommentForm
-            article_id={article_id}
-            addComment={this.addComment}
-            username={this.props.username}
-          />
         </ul>
       </div>
     );
@@ -65,7 +67,7 @@ class Comments extends Component {
 
   addComment = (newComment) => {
     this.setState(({ comments }) => {
-      return { comments: [...comments, newComment] };
+      return { comments: [newComment, ...comments] };
     });
   };
 

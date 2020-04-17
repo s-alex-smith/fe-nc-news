@@ -119,6 +119,11 @@ nav li:hover::after {
     font-size: 15px;
     padding: 5px;
   }
+
+  .articleCard .p4 {
+    font-size: 9px;
+    margin: 5px 5px 5px 5px;
+  }
 }
 
 .mainBody {
@@ -142,13 +147,14 @@ nav li:hover::after {
     rgba(195, 60, 84, 0.9710259103641457) 60%,
     rgba(250, 249, 243, 1) 100%
   );
-  grid-template-columns: 80% 20%;
-  grid-template-rows: 60% 40%;
+  grid-template-columns: 80% auto;
+  grid-template-rows: 60% auto;
   margin-top: 5px;
   margin-bottom: 2px;
   width: 95%;
   align-items: center;
   text-align: start;
+  font-size: 10px;
 }
 
 .articleLink {
@@ -159,10 +165,8 @@ nav li:hover::after {
   padding: 20px;
 }
 
-/* .articleCard p {
-  font-family: monospace;
-  font-size: 10px;
-  margin-left: 10px;
+/* .articleCard .p4 {
+  font-size: 15px;
 } */
 
 .fullArticle {

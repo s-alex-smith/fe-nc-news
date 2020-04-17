@@ -37,12 +37,12 @@ class Comments extends Component {
               />
             );
           })}
+          <CommentForm
+            article_id={article_id}
+            addComment={this.addComment}
+            username={this.props.username}
+          />
         </ul>
-        <CommentForm
-          article_id={article_id}
-          addComment={this.addComment}
-          username={this.props.username}
-        />
       </div>
     );
   }

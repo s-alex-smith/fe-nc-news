@@ -13,8 +13,9 @@ class Deleter extends Component {
 
   render() {
     const { comment_id, author } = this.props;
+
     return (
-      <div>
+      <div id="delete">
         <button
           onClick={() => {
             this.handleClick(comment_id, author);

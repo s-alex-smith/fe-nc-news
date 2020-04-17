@@ -13,8 +13,8 @@ class CommentForm extends Component {
     if (postError)
       return <ErrorDisplay status={postError.status} msg={postError.msg} />;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <form onSubmit={this.handleSubmit} id="commentForm">
+        <label className="username">
           Username:
           <input
             type="text"
@@ -23,9 +23,9 @@ class CommentForm extends Component {
             onChange={this.handleChange}
           />
         </label>
-        <label>
-          Comment:
-          <input
+
+        <label className="comment">
+          <textarea
             type="text"
             placeholder="have your say.."
             name="commentInput"
@@ -33,6 +33,7 @@ class CommentForm extends Component {
             onChange={this.handleChange}
           />
         </label>
+
         <button>Submit</button>
       </form>
     );

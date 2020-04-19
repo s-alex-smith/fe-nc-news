@@ -2,14 +2,13 @@
   background: #faf9f3;
   width: 100%;
 }
-/* 
-ul {
-  list-style-type: none;
-  margin: 5px;
-  padding: 0px;
-} */
 
 .container {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.commentCard {
   width: 95%;
   margin: 0 auto;
 }
@@ -76,6 +75,7 @@ nav li {
 
 .nava {
   text-decoration: none;
+  display: block;
 }
 
 nav li:after {
@@ -94,27 +94,10 @@ nav li:hover::after {
   transform: translateY(-80%);
   transition: transform 0.2s;
 }
-#router {
-  margin: 0px 35.125px;
-  /* padding: 5px; */
-  display: flex;
-  align-self: flex-start;
-  justify-self: flex-start;
-}
-
-.mainBody {
-  display: flex;
-  flex-direction: column;
-  /* align-items: left;
-  justify-content: left; */
-  width: 100%;
-  /* align-self: flex-start; */
-}
 
 .sortByForm {
   border: 2px solid rgba(102, 89, 89, 0.157);
   padding: 5px;
-  margin: 5px;
 }
 
 .sortByForm label {
@@ -157,7 +140,7 @@ nav li:hover::after {
   margin-top: 10px;
   border-bottom: 3px solid #bd1130;
   border-left: 3px solid #bd1130;
-  width: 100%;
+  box-sizing: border-box;
 }
 
 .fullArticle h3 {
@@ -213,26 +196,20 @@ nav li:hover::after {
 
 .votesBox {
   font-family: monospace;
-  font-size: 15px;
+  font-size: 13px;
   background: #1abc9c;
   border: 2px solid black;
-  margin: 5px;
-  margin-bottom: 10px;
-  padding: 5px;
+  margin: 5px 30px 10px 5px;
   width: 40%;
   float: right;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .commentCard ul {
   width: 100%;
   padding: 0px;
   margin-top: 10px;
-  background: linear-gradient(
-    135deg,
-    rgba(195, 60, 84, 0.9710259103641457) 60%,
-    rgba(250, 249, 243, 1) 100%
-  );
 }
 
 .commentCard li {
@@ -242,12 +219,11 @@ nav li:hover::after {
     rgba(195, 60, 84, 0.9710259103641457) 60%,
     rgba(250, 249, 243, 1) 100%
   );
-  grid-template-columns: 65% auto;
-  grid-template-rows: 33% 33% auto;
-  grid-template-areas: "topLeft topRight" "middleLeft middleRight" "bottomLeft bottomRight";
-  margin-top: 10px;
+  grid-template-columns: 60% auto;
+  grid-template-rows: 25% 25% 25% 25%;
+  grid-template-areas: "comment topRight" "comment votes" "comment votes" "username bottomRight";
+  margin-top: 7px;
   width: 100%;
-  height: 270px;
   align-items: center;
   text-align: start;
 }
@@ -259,22 +235,29 @@ nav li:hover::after {
 }
 
 .commentCard p {
+  grid-area: comment;
   font-family: monospace;
   margin-left: 20px;
+  margin-top: 5px;
   font-size: 15px;
 }
 
 .commentCard .p1 {
-  grid-area: middleLeft;
+  grid-area: username;
 }
 
 #delete {
-  grid-area: bottomLeft;
+  grid-area: username;
   justify-self: center;
-  margin: 0px;
-  width: 40%;
-  padding: 0px;
-  font-size: 15px;
+  align-self: center;
+  margin-bottom: 10px;
+  font-size: 13px;
+  align-items: center;
+  justify-items: center;
+}
+
+#delete .btn {
+  padding: 9px;
 }
 
 #commentForm {
@@ -283,7 +266,6 @@ nav li:hover::after {
   align-self: center;
   border-bottom: 5px solid black;
   border-top: 5px solid black;
-  height: 200px;
   width: 100%;
   text-align: center;
   background: #1abc9c;
@@ -318,17 +300,20 @@ nav li:hover::after {
 }
 
 .commentVotes {
-  grid-area: middleRight;
+  grid-area: votes;
   font-family: monospace;
-  font-size: 10px;
+  font-size: 13px;
   background: #1abc9c;
   border: 2px solid black;
-  margin: 5px;
-  padding: 5px;
+  padding: 3px;
   width: 60%;
   text-align: center;
   justify-self: center;
-  align-self: center;
+  margin: 10px auto;
+}
+
+.commentVotes p {
+  margin: auto;
 }
 
 .articleCard .commentVotes {
@@ -349,9 +334,9 @@ nav li:hover::after {
   font-size: inherit;
   color: #fff;
   cursor: pointer;
-  padding: 25px 60px;
+  padding: 10px 5px;
   display: inline-block;
-  margin: 15px 25px;
+  margin: 15px 15px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
@@ -399,10 +384,6 @@ nav li:hover::after {
   top: 2px;
 }
 
-/* select {
-  right: 0;
-} */
-
 #loader {
   position: absolute;
   left: 50%;
@@ -417,6 +398,27 @@ nav li:hover::after {
   width: 120px;
   height: 120px;
   animation: spin 2s linear infinite;
+}
+
+.error {
+  background: linear-gradient(
+    135deg,
+    rgba(195, 60, 84, 0.9710259103641457) 60%,
+    rgba(250, 249, 243, 1) 100%
+  );
+  font-family: monospace;
+}
+
+.error h3 {
+  margin: 10px;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.error p {
+  font-size: 15px;
+  margin: 10px;
+  padding: 10px;
 }
 
 @keyframes spin {
@@ -458,31 +460,17 @@ nav li:hover::after {
     height: 300px;
     font-size: 20px;
   }
-  #router {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-  }
-
-  .mainBody {
-    align-self: right;
-    align-content: flex-start;
-    align-items: flex-start;
-    float: left;
-    margin-top: 10px;
-  }
 
   .articleCard {
     width: 100%;
   }
   .articleCard .articleLink {
-    font-size: 15px;
+    font-size: 18px;
     padding: 5px;
   }
 
   .articleCard .p4 {
-    font-size: 9px;
+    font-size: 12px;
     margin: 5px 5px 5px 5px;
   }
 
@@ -496,16 +484,16 @@ nav li:hover::after {
     font-size: 25px;
   }
   .fullArticle .p1 {
-    font-size: 10px;
+    font-size: 12px;
   }
   .fullArticle .p2 {
-    font-size: 10px;
+    font-size: 15px;
   }
   .fullArticle h4 {
     font-size: 15px;
   }
   .votesBox {
-    font-size: 10px;
+    font-size: 15px;
     margin: 5px;
     padding: 3px;
     width: 80%;
@@ -515,7 +503,7 @@ nav li:hover::after {
   }
 
   .btn {
-    font-size: inherit;
+    font-size: 10px;
     color: #fff;
     cursor: pointer;
     padding: 12px;
@@ -523,44 +511,40 @@ nav li:hover::after {
   }
   .commentCard {
     width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .commentCard ul {
-    width: 100%;
     display: flex;
     flex-direction: column;
     margin: 0;
   }
 
-  .comments li {
-    display: grid;
-    grid-template-columns: 65% auto;
-    grid-template-rows: 33% 33% auto;
-    grid-template-areas: "topLeft topRight" "middleLeft middleRight" "bottomLeft bottomRight";
-    margin-top: 7px;
-    width: 100%;
-    height: 300px;
-    align-items: flex-start;
+  .commentCard li {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    align-items: center;
     text-align: start;
-  }
-
-  .article .comments {
-    justify-self: left;
-    justify-content: left;
-    justify-items: left;
-    align-self: left;
-    align-content: left;
-    align-items: left;
   }
 
   .comments p {
     font-family: monospace;
-    margin-left: 20px;
+    margin-left: auto;
+    padding-top: 20px;
     font-size: 15px;
   }
 
-  .comments .p1 {
-    grid-area: middleLeft;
-    align-self: flex-end;
+  #delete {
+    justify-self: center;
+    align-self: center;
+    margin: 0px;
+    padding: 0px;
+    font-size: 13px;
+  }
+
+  #delete .btn {
+    margin: auto auto 5px auto;
   }
 }

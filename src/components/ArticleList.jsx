@@ -35,7 +35,7 @@ class ArticleList extends Component {
     if (topicError)
       return <ErrorDisplay status={topicError.status} msg={topicError.msg} />;
     return (
-      <main className="mainBody">
+      <main className="container">
         <SortArticlesForm
           sort_by={sort_by}
           order={order}

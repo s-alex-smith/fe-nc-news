@@ -25,7 +25,7 @@ class SingleArticle extends Component {
         <ErrorDisplay status={articleError.status} msg={articleError.msg} />
       );
     return (
-      <main className="mainBody">
+      <main className="container">
         <div className="fullArticle">
           <h3>{article.title}</h3>
           <p className="p1">written by: {article.author}</p>

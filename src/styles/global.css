@@ -51,11 +51,9 @@ nav ul {
 }
 
 nav li {
-  /* display: inline-block; */
   padding: 10px;
   margin: 10px;
   text-transform: uppercase;
-  /* text-decoration: none; */
   text-align: center;
   color: #1abc9c;
   position: relative;
@@ -69,7 +67,6 @@ nav li {
 
 .nava {
   text-decoration: none;
-  /* display: block; */
 }
 
 nav li:after {

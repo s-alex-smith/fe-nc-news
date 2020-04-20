@@ -9,22 +9,21 @@ const SortArticlesForm = ({
 }) => {
   return (
     <form className="sortByForm">
-      <label>
-        Sort articles by:
+      <div className="bothLabels">
+        <label>Sort articles by:</label>
         <select sort_by={sort_by} onChange={handleChangeSortBy}>
           <option sort_by="created_at">created_at</option>
           <option sort_by="votes">votes</option>
           <option sort_by="comment_count">comment_count</option>
         </select>
-      </label>
-
-      <label>
-        Arrange by:
+      </div>
+      <div className="bothLabels">
+        <label>Arrange by:</label>
         <select order={order} onChange={handleChangeOrder}>
           <option order="desc">desc</option>
           <option order="asc">asc</option>
         </select>
-      </label>
+      </div>
     </form>
   );
 };

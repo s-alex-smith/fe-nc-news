@@ -10,11 +10,11 @@ Northcoders News has articles which are divided into topics. Each article has us
 
 Northcoders news can be found hosted here :
 
-The github repositery can be found here: https://github.com/s-alex-smith/fe-nc-news
+The github repository can be found here: https://github.com/s-alex-smith/fe-nc-news
 
 The back-end version of northcoders news is hosted here: https://salex-nc-news-server.herokuapp.com/api
 
-The github repositery of the back-end version is here: https://github.com/s-alex-smith/be-nc-news
+The github repository of the back-end version is here: https://github.com/s-alex-smith/be-nc-news
 
 ## User abilities:
 
@@ -43,7 +43,7 @@ To run this project you will need to ensure that node is installed to at least v
 Fork this repo and use the following command in your terminal:
 
 ```
-  git clone YOUR-LINK-HERE
+  git clone https://github.com/s-alex-smith/fe-nc-news.git
 ```
 
 Once open, you need to install the dependencies using the following code:
@@ -58,6 +58,6 @@ To run the project locally, run the following command in your terminal
 npm start
 ```
 
-The page will automaticall reload if any changes are saved to the code.
+The page will automatically reload if any changes are saved to the code.
 
 This project was created using [Create React App](https://reactjs.org/docs/create-a-new-react-app.html).

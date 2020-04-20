@@ -21,6 +21,7 @@ class CommentForm extends Component {
             name="commentInput"
             value={commentInput}
             onChange={this.handleChange}
+            required
           />
         </label>
 

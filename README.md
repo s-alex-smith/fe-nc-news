@@ -8,7 +8,7 @@ Northcoders News has articles which are divided into topics. Each article has us
 
 ## Links
 
-Northcoders news can be found hosted here :
+Northcoders news can be found hosted here: https://s-alex-smith-nc-news.netlify.app
 
 The github repository can be found here: https://github.com/s-alex-smith/fe-nc-news
 
